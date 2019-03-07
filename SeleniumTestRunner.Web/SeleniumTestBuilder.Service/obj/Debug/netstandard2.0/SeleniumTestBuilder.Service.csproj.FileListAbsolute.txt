@@ -1,0 +1,12 @@
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestBuilder.Service\bin\Debug\netstandard2.0\SeleniumTestBuilder.Service.deps.json
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestBuilder.Service\bin\Debug\netstandard2.0\SeleniumTestBuilder.Service.dll
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestBuilder.Service\bin\Debug\netstandard2.0\SeleniumTestBuilder.Service.pdb
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestBuilder.Service\bin\Debug\netstandard2.0\SeleniumTestRunner.Models.dll
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestBuilder.Service\bin\Debug\netstandard2.0\SeleniumTestRunner.Models.pdb
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestBuilder.Service\obj\Debug\netstandard2.0\SeleniumTestBuilder.Service.csprojAssemblyReference.cache
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestBuilder.Service\obj\Debug\netstandard2.0\SeleniumTestBuilder.Service.csproj.CoreCompileInputs.cache
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestBuilder.Service\obj\Debug\netstandard2.0\SeleniumTestBuilder.Service.AssemblyInfoInputs.cache
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestBuilder.Service\obj\Debug\netstandard2.0\SeleniumTestBuilder.Service.AssemblyInfo.cs
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestBuilder.Service\obj\Debug\netstandard2.0\SeleniumTestBuilder.Service.csproj.CopyComplete
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestBuilder.Service\obj\Debug\netstandard2.0\SeleniumTestBuilder.Service.dll
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestBuilder.Service\obj\Debug\netstandard2.0\SeleniumTestBuilder.Service.pdb

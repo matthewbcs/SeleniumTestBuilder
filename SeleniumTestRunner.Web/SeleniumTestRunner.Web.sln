@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumTestRunner.Web", "SeleniumTestRunner.Web\SeleniumTestRunner.Web.csproj", "{7F864783-8A86-4EA4-AD2A-3DA65AB18490}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumTestRunner.Models", "SeleniumTestRunner.Models\SeleniumTestRunner.Models.csproj", "{B343233A-E337-4D43-B81D-64C781E12312}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumTestBuilder.Service", "SeleniumTestBuilder.Service\SeleniumTestBuilder.Service.csproj", "{60377BCC-F800-414D-87A7-1C8188093D16}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{7F864783-8A86-4EA4-AD2A-3DA65AB18490}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F864783-8A86-4EA4-AD2A-3DA65AB18490}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F864783-8A86-4EA4-AD2A-3DA65AB18490}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B343233A-E337-4D43-B81D-64C781E12312}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B343233A-E337-4D43-B81D-64C781E12312}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B343233A-E337-4D43-B81D-64C781E12312}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B343233A-E337-4D43-B81D-64C781E12312}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60377BCC-F800-414D-87A7-1C8188093D16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60377BCC-F800-414D-87A7-1C8188093D16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60377BCC-F800-414D-87A7-1C8188093D16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60377BCC-F800-414D-87A7-1C8188093D16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

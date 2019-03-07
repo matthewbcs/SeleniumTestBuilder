@@ -1,34 +1,60 @@
-﻿@{
+﻿@model SeleniumTestRunner.Models.ViewModels.TestBuilderViewModel
+@using SeleniumTestRunner.Web.Helper
+@{
     ViewBag.Title = "Home Page";
 }
 
 <script>
 
     var stepTypeList = ['Given', 'When', 'Then'];
+    if (typeof (controllerData) == "undefined") {
+        var controllerData = {};
+    }
 
+    controllerData.TestBuilderModel = {
+        DefinedStepsList: @Html.Raw(new JsonSerializationProcessor().Serialize(Model.DefinedSteps)),
+        StepsList: [],
+        SelectedStep: null,
+    }
 </script>
 
 <body ng-app="myapp" ng-controller="ctrl">
-<h1>Scenario Builder</h1>
+<h1 style="text-align: center">Scenario Builder</h1>
 
-<input type="button" value="Add Step" ng-click="addStep()"/>
+<div style="text-align: center" >
+    <select ng-model="SelectedStep" ng-options="x.StepTypeLabelFull for x in DefinedStepsList">
 
-<div psi-sortable="" ng-model="list">
-    <div ng-repeat="item in list track by $index"><div class="step">
-
-    <select ng-model="item.stepType" ng-options="x for x in stepTypeList">   </select>
-    <select ng-model="item.stepDetail" ng-options="x for x in stepDetailList">   </select>
-            {{item.stepType}}
-
-    <input type="text" ng-model="item.param" />
-
-
+    </select>
+    <input type="button" value="Add Step" ng-click="addStep()"/>
+    <input type="button" value="Run Feature" ng-click="RunTest()" />
+    </div>
     
+
+<div psi-sortable="" ng-model="StepsList">
+    <div ng-repeat="item in StepsList track by $index"><div class="step">
+
+  
+            <div >{{item.StepTypeLabel}} {{item.StepLabel}}</div>
+
+    <div style="margin-bottom: 5px; font-weight: bold">Parameters</div>
+
+    <div style="margin-bottom: 5px" ng-repeat="t in item.StepParams ">
+        {{t.ParamLabel}}:<input type="text" ng-model="t.ParamValue" />
+    </div>
+
+
+
 
 </div>
         
     </div>
 </div>
 <hr>
-<div ng-repeat="item in list track by $index" > {{item}} </div>
+<div style="display: -webkit-box; font-size: larger; text-align: center" ng-repeat="item in StepsList track by $index"> {{item.StepTypeLabelFull}} -> 
+    
+    <div style="background-color: yellow" ng-repeat="s in item.StepParams track by $index">
+        {{s.ParamValue}}
+    </div>
+
+</div>
 </body>

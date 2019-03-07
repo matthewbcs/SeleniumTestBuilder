@@ -130,6 +130,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\JsonSerializationProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +141,7 @@
     <Content Include="CustomFiles\script.js" />
     <Content Include="CustomFiles\sortable.js" />
     <Content Include="CustomFiles\style.css" />
+    <Content Include="CustomFiles\testbuilder.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -188,6 +190,16 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SeleniumTestBuilder.Service\SeleniumTestBuilder.Service.csproj">
+      <Project>{60377bcc-f800-414d-87a7-1c8188093d16}</Project>
+      <Name>SeleniumTestBuilder.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SeleniumTestRunner.Models\SeleniumTestRunner.Models.csproj">
+      <Project>{B343233A-E337-4D43-B81D-64C781E12312}</Project>
+      <Name>SeleniumTestRunner.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

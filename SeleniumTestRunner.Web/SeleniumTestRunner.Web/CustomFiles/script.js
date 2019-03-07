@@ -1,6 +1,8 @@
 ﻿angular.module('myapp', ['psi.sortable']);
 
 function ctrl($scope) {
+    $.extend($scope, window.controllerData.TestBuilderModel);
+
     setTimeout(function () {
         $scope.$apply(function () {
 
@@ -22,13 +24,13 @@ function ctrl($scope) {
     }, 500);
 
     $scope.addStep = function () {
-        var step = {
-            stepType: '',
-            stepDetail: '',
-            param1: '',
-            param2: '',
-        };
+        //var step = {
+        //    stepType: '',
+        //    stepDetail: '',
+        //    param1: '',
+        //    param2: '',
+        //};
 
-        $scope.list.push(step);
+        $scope.list.push($scope.SelectedStep);
     };
 }
