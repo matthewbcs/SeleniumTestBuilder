@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SeleniumTestRunner.Models\SeleniumTestRunner.Models.csproj" />
   </ItemGroup>
 
