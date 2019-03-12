@@ -9,5 +9,6 @@ namespace SeleniumTestRunner.Models.ViewModels
     {
         public List<StepItem> DefinedSteps { get; set; }
         public List<StepItem> Steps { get; set; }
+        public List<StepItem> SampleTest1Steps { get; set; }
     }
 }

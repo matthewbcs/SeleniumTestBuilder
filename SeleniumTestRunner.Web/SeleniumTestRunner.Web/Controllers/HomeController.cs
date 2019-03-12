@@ -24,6 +24,7 @@ namespace SeleniumTestRunner.Web.Controllers
         {
             TestBuilderViewModel model = new TestBuilderViewModel();
             model.DefinedSteps = _testStepsService.GetDefinedSteps();
+            model.SampleTest1Steps = _testStepsService.SampleTest1();
             return View(model);
         }
 

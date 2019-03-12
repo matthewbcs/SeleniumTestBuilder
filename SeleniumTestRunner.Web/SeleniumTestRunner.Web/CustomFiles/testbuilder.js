@@ -36,6 +36,10 @@ app.controller('ctrl', ['$scope', '$http','$timeout', function ($scope, $http,$t
         $scope.StepsList.push(step);
     };
 
+    $scope.addSampleTest = function () {
+        $scope.StepsList = $scope.SampleTest1StepsList;
+    };
+
     $scope.RunTest = function () {
 
         var postData = {};

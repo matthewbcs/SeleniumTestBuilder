@@ -13,6 +13,7 @@ namespace SeleniumTestBuilder.Service.TestBuilderSteps
     public interface ITestStepsService
     {
         List<StepItem> GetDefinedSteps();
+        List<StepItem> SampleTest1();
     }
 
     public class TestStepsService : ITestStepsService
@@ -181,6 +182,45 @@ namespace SeleniumTestBuilder.Service.TestBuilderSteps
             
 
             return result ? new ServiceMessage(){Message = passMsg,WasSuccess = true} : new ServiceMessage(){Message = failMsg,WasSuccess = false};
+        }
+
+        public List<StepItem> SampleTest1()
+        {
+
+            // www.argos.co.uk search and check title element
+            // step 1
+            List<StepItem> s = new List<StepItem>();
+            StepItem stepItem1 = GetDefinedSteps().FirstOrDefault(x =>x.StepItemCode == (int)EStepItemCode.GoToUrl);
+            stepItem1.StepParams.FirstOrDefault(x => x.ParamLabel == "Url").ParamValue = "www.argos.co.uk";
+            s.Add(stepItem1);
+
+            // step 2
+            StepItem stepItem2 = GetDefinedSteps().FirstOrDefault(x =>x.StepItemCode == (int)EStepItemCode.WaitForSeconds);
+            stepItem2.StepParams.FirstOrDefault(x => x.ParamLabel == "Seconds To Wait").ParamValue = "9000";
+            s.Add(stepItem2);
+
+            // step 3
+            StepItem stepItem3 = GetDefinedSteps().FirstOrDefault(x =>x.StepItemCode == (int)EStepItemCode.SetTextBoxValue);
+            stepItem3.StepParams.FirstOrDefault(x => x.ParamLabel == "Text box Value").ParamValue = "books";
+            stepItem3.StepParams.FirstOrDefault(x => x.ParamLabel == "CSS Selector").ParamValue = "#searchTerm";
+            s.Add(stepItem3);
+
+            // step 4
+            StepItem stepItem4 = GetDefinedSteps().FirstOrDefault(x =>x.StepItemCode == (int)EStepItemCode.ClickOnElement);
+            stepItem4.StepParams.FirstOrDefault(x => x.ParamLabel == "CSS Selector").ParamValue = "div.xs-auto--none:nth-child(1) > form:nth-child(1) > button:nth-child(3)";
+            s.Add(stepItem4);
+
+            // step 5
+            StepItem stepItem5 = GetDefinedSteps().FirstOrDefault(x =>x.StepItemCode == (int)EStepItemCode.WaitForSeconds);
+            stepItem5.StepParams.FirstOrDefault(x => x.ParamLabel == "Seconds To Wait").ParamValue = "9000";
+            s.Add(stepItem5);
+
+            // step 6
+            StepItem stepItem6 = GetDefinedSteps().FirstOrDefault(x =>x.StepItemCode == (int)EStepItemCode.ElementIsVisible);
+            stepItem6.StepParams.FirstOrDefault(x => x.ParamLabel == "CSS Selector").ParamValue = ".search-title";
+            s.Add(stepItem6);
+
+            return s;
         }
     }
 

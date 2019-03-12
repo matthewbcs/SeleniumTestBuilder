@@ -13,6 +13,7 @@
 
     controllerData.TestBuilderModel = {
         DefinedStepsList: @Html.Raw(new JsonSerializationProcessor().Serialize(Model.DefinedSteps)),
+        SampleTest1StepsList: @Html.Raw(new JsonSerializationProcessor().Serialize(Model.SampleTest1Steps)),
         StepsList: [],
         SelectedStep: null,
         TestRunning: false,
@@ -23,13 +24,14 @@
 </script>
 
 <body ng-app="myapp" ng-controller="ctrl">
-<h1 style="text-align: center">Scenario Builder</h1>
+<h4 style="text-align: center">Can you write a test that passes ??</h4>
 
 <div style="text-align: center" >
     <select ng-model="SelectedStep" ng-options="x.StepTypeLabelFull for x in DefinedStepsList">
 
     </select>
     <input type="button" value="Add Step" ng-click="addStep()"/>
+    <input type="button" value="Set Sample Test" ng-click="addSampleTest()"/>
     <input type="button" value="Run Feature" ng-click="RunTest()" />
     </div>
     

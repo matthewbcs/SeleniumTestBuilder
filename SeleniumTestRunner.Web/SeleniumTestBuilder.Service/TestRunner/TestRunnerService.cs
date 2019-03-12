@@ -38,6 +38,7 @@ namespace SeleniumTestBuilder.Service.TestRunner
                     catch (Exception e)
                     {
                         responses.Add(new ServiceMessage(){Message = "There was an error, the selector/url may be invalid ", WasSuccess = false});
+                        break;
                     }
                     
                 }else if (responses[i - 1].WasSuccess == true)
@@ -52,6 +53,10 @@ namespace SeleniumTestBuilder.Service.TestRunner
                         responses.Add(new ServiceMessage(){Message = "There was an error, the selector/url may be invalid ", WasSuccess = false});
                     }
                     
+                }
+                else
+                {
+                    responses.Add(new ServiceMessage(){Message = "There was an error, the selector/url may be invalid ", WasSuccess = false});
                 }
             }
 
@@ -86,5 +91,6 @@ namespace SeleniumTestBuilder.Service.TestRunner
             return serviceMessage;
 
         }
+       
     }
 }
