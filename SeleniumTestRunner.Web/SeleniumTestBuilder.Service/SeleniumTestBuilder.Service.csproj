@@ -12,4 +12,10 @@
     <ProjectReference Include="..\SeleniumTestRunner.Models\SeleniumTestRunner.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="chromedriver.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

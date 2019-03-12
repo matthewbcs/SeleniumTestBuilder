@@ -21,6 +21,7 @@ namespace SeleniumTestRunner.Models.Enums
         UrlContainsString = 6,
         ElementIsVisible = 7,
         ExpectedText = 8,
+        WaitForSeconds =9,
 
     }
 }

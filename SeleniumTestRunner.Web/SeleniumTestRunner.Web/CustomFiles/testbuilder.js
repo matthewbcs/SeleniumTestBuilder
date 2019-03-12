@@ -1,7 +1,7 @@
 ﻿
 var app = angular.module('myapp', ['psi.sortable']);
  
-app.controller('ctrl', ['$scope', '$http', function ($scope, $http) {
+app.controller('ctrl', ['$scope', '$http','$timeout', function ($scope, $http,$timeout) {
 
 
     var employeeDetails = {};
@@ -47,18 +47,35 @@ app.controller('ctrl', ['$scope', '$http', function ($scope, $http) {
             alert("No Steps to run");
             return;
         }
+        var didStepFail = false;
+        //$scope.StepsList[i].IsRunning = false;
+        $scope.TestRunning = true;
 
+        $http.post('/Home/RunSeleniumTest', postData).then(function(response) {
 
-        $http.post('/Home/RunSeleniumTest', postData).then(
-            function (response) {
-                
-                alert(response.data.Message);
-                if (response.data.WasSucess === true) {
-                    window.location.reload();
+            $scope.TestRunning = false;
+
+            for (var i = 0; i < response.data.length; i++) {
+
+                if (response.data[i].WasSuccess === true) {
+                    $scope.StepsList[i].DidPass = true;
+                    $scope.StepsList[i].DidFail = false;
+                } else {
+                    $scope.StepsList[i].DidFail = true;
+                    $scope.StepsList[i].DidPass = false;
+                    $scope.StepsList[i].FailMessage = response.data[i].Message;
+                    didStepFail = true; // we want to end the test by breaking out
                 }
-                
             }
-        );
+        });
+
     };
+    
+
+  
+
+  
+    
+   
 
 }]);

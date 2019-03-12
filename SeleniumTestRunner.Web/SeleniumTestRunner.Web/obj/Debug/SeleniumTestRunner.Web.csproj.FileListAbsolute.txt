@@ -258,3 +258,6 @@ C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunne
 C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Web\obj\Debug\SeleniumTestRunner.Web.csproj.CopyComplete
 C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Web\obj\Debug\SeleniumTestRunner.Web.dll
 C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Web\obj\Debug\SeleniumTestRunner.Web.pdb
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Web\bin\chromedriver.exe
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Web\bin\WebDriver.dll
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Web\bin\WebDriver.xml

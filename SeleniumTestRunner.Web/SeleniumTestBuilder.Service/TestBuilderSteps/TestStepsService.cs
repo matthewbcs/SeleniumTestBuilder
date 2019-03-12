@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using SeleniumTestRunner.Models.Dto;
 using SeleniumTestRunner.Models.Enums;
@@ -26,6 +28,7 @@ namespace SeleniumTestBuilder.Service.TestBuilderSteps
             //Whens
             steps.Add(BuildStep(EStepType.When, (int)EStepItemCode.ClickOnElement,"I click on the element",CreateParams(new List<string> {"CSS Selector"})));
             steps.Add(BuildStep(EStepType.When, (int)EStepItemCode.GoToUrl,"I go to the URL",CreateParams(new List<string> {"Url"})));
+            steps.Add(BuildStep(EStepType.When, (int)EStepItemCode.WaitForSeconds,"I Wait for x Seconds",CreateParams(new List<string> {"Seconds To Wait"})));
             steps.Add(BuildStep(EStepType.When, (int)EStepItemCode.SetDropDownValue,"I Set the dropdown element as value",CreateParams(new List<string> {"Dropdown Value","CSS Selector"})));
             steps.Add(BuildStep(EStepType.When, (int)EStepItemCode.SetTextBoxValue,"I Set the text box element value to",CreateParams(new List<string> {"Text box Value","CSS Selector"})));
             
@@ -65,7 +68,7 @@ namespace SeleniumTestBuilder.Service.TestBuilderSteps
 
         }
 
-        public ServiceMessage ExecuteStep(ChromeDriver driver, StepItem stepData, List<StepParamDetail> paramData)
+        public ServiceMessage ExecuteStep(IWebDriver driver, StepItem stepData, List<StepParamDetail> paramData)
         {
             // validate step data first
             if(stepData == null)
@@ -82,7 +85,7 @@ namespace SeleniumTestBuilder.Service.TestBuilderSteps
             switch (eStepItemCode)
             {
                 case EStepItemCode.ImOnUrl:
-                    stepParamDetail = stepData.StepParams.FirstOrDefault(x => x.ParamLabel.ToLower() == "url");
+                    stepParamDetail = stepData.StepParams.FirstOrDefault(x => x.ParamLabel.ToLower() == "url".ToLower());
                     if(string.IsNullOrEmpty(stepParamDetail.ParamValue))
                         return new ServiceMessage(){Message = "Url was not specified",WasSuccess = false};
 
@@ -90,67 +93,76 @@ namespace SeleniumTestBuilder.Service.TestBuilderSteps
                         "Urls did not match");
                     
                 case EStepItemCode.ClickOnElement:
-                    stepParamDetail = stepData.StepParams.FirstOrDefault(x => x.ParamLabel.ToLower() == "CSS Selector");
+                    stepParamDetail = stepData.StepParams.FirstOrDefault(x => x.ParamLabel.ToLower() == "CSS Selector".ToLower());
                     if(string.IsNullOrEmpty(stepParamDetail.ParamValue))
                         return new ServiceMessage(){Message = "selector was not specified",WasSuccess = false};
                     
-                    driver.FindElementByCssSelector(stepParamDetail.ParamValue).Click();
+                    driver.FindElement(By.CssSelector(stepParamDetail.ParamValue)).Click();
                     return new ServiceMessage(){Message = "Success",WasSuccess = true};
                
                 case EStepItemCode.GoToUrl:
-                    stepParamDetail = stepData.StepParams.FirstOrDefault(x => x.ParamLabel.ToLower() == "url");
+                    stepParamDetail = stepData.StepParams.FirstOrDefault(x => x.ParamLabel.ToLower() == "url".ToLower());
                     if(string.IsNullOrEmpty(stepParamDetail.ParamValue))
                         return new ServiceMessage(){Message = "Url was not specified",WasSuccess = false};
 
-                    driver.Navigate().GoToUrl(stepParamDetail.ParamValue);
+                    driver.Navigate().GoToUrl("https://"+stepParamDetail.ParamValue);
                     return new ServiceMessage(){Message = "Success",WasSuccess = true};
 
                 case EStepItemCode.SetDropDownValue:
-                    StepParamDetail stepParamDetail1 = stepData.StepParams.FirstOrDefault(x => x.ParamLabel.ToLower() == "Dropdown Value");
+                    StepParamDetail stepParamDetail1 = stepData.StepParams.FirstOrDefault(x => x.ParamLabel.ToLower() == "Dropdown Value".ToLower());
                     if(string.IsNullOrEmpty(stepParamDetail1.ParamValue))
                         return new ServiceMessage(){Message = "Dropdown value was not specified",WasSuccess = false};
-                    StepParamDetail stepParamDetail2 = stepData.StepParams.FirstOrDefault(x => x.ParamLabel.ToLower() == "CSS Selector");
+                    StepParamDetail stepParamDetail2 = stepData.StepParams.FirstOrDefault(x => x.ParamLabel.ToLower() == "CSS Selector".ToLower());
                     if(string.IsNullOrEmpty(stepParamDetail2.ParamValue))
                         return new ServiceMessage(){Message = "selector was not specified",WasSuccess = false};
 
-                    driver.FindElementByCssSelector(stepParamDetail2.ParamValue).SendKeys(stepParamDetail1.ParamValue);
+                    driver.FindElement(By.CssSelector(stepParamDetail2.ParamValue)).SendKeys(stepParamDetail1.ParamValue);
                     return new ServiceMessage(){Message = "Success",WasSuccess = true};
                 case EStepItemCode.SetTextBoxValue:
-                    StepParamDetail ptxtbox1 = stepData.StepParams.FirstOrDefault(x => x.ParamLabel.ToLower() == "Text box Value");
+                    StepParamDetail ptxtbox1 = stepData.StepParams.FirstOrDefault(x => x.ParamLabel.ToLower() == "Text box Value".ToLower());
                     if(string.IsNullOrEmpty(ptxtbox1.ParamValue))
                         return new ServiceMessage(){Message = "Dropdown value was not specified",WasSuccess = false};
 
-                    StepParamDetail selector2 = stepData.StepParams.FirstOrDefault(x => x.ParamLabel.ToLower() == "CSS Selector");
+                    StepParamDetail selector2 = stepData.StepParams.FirstOrDefault(x => x.ParamLabel.ToLower() == "CSS Selector".ToLower());
                     if(string.IsNullOrEmpty(selector2.ParamValue))
                         return new ServiceMessage(){Message = "selector was not specified",WasSuccess = false};
 
-                    driver.FindElementByCssSelector(selector2.ParamValue).SendKeys(ptxtbox1.ParamValue);
+                    driver.FindElement(By.CssSelector(selector2.ParamValue)).SendKeys(ptxtbox1.ParamValue);
                     return new ServiceMessage(){Message = "Success",WasSuccess = true};
                 case EStepItemCode.UrlContainsString:
-                    stepParamDetail = stepData.StepParams.FirstOrDefault(x => x.ParamLabel.ToLower() == "Url partial");
+                    stepParamDetail = stepData.StepParams.FirstOrDefault(x => x.ParamLabel.ToLower() == "Url partial".ToLower());
 
                     if(string.IsNullOrEmpty(stepParamDetail.ParamValue))
                         return new ServiceMessage(){Message = "Url was not specified",WasSuccess = false};
 
                     return DoesContain(stepParamDetail.ParamValue, driver.Url, "Success", "Url does not contain string");
                 case EStepItemCode.ElementIsVisible:
-                    stepParamDetail = stepData.StepParams.FirstOrDefault(x => x.ParamLabel.ToLower() == "CSS Selector");
+                    stepParamDetail = stepData.StepParams.FirstOrDefault(x => x.ParamLabel.ToLower() == "CSS Selector".ToLower());
                     if(string.IsNullOrEmpty(stepParamDetail.ParamValue))
                         return new ServiceMessage(){Message = "selector was not specified",WasSuccess = false};
 
-                    bool isEnabled = driver.FindElementByCssSelector(stepParamDetail.ParamValue).Enabled;
+                    bool isEnabled = driver.FindElement(By.CssSelector(stepParamDetail.ParamValue)).Enabled;
                     return AreEqual("true", isEnabled.ToString(), "Success", "Element is disabled/ not visible");
 
                 case EStepItemCode.ExpectedText:
-                    StepParamDetail exptext = stepData.StepParams.FirstOrDefault(x => x.ParamLabel.ToLower() == "Expected Text");
+                    StepParamDetail exptext = stepData.StepParams.FirstOrDefault(x => x.ParamLabel.ToLower() == "Expected Text".ToLower());
                     if(string.IsNullOrEmpty(exptext.ParamValue))
                         return new ServiceMessage(){Message = "expected text value was not specified",WasSuccess = false};
-                    StepParamDetail selector = stepData.StepParams.FirstOrDefault(x => x.ParamLabel.ToLower() == "CSS Selector");
+                    StepParamDetail selector = stepData.StepParams.FirstOrDefault(x => x.ParamLabel.ToLower() == "CSS Selector".ToLower());
                     if(string.IsNullOrEmpty(selector.ParamValue))
                         return new ServiceMessage(){Message = "selector was not specified",WasSuccess = false};
 
-                    string actualText = driver.FindElementByCssSelector(selector.ParamValue).Text;
+                    string actualText = driver.FindElement(By.CssSelector(selector.ParamValue)).Text;
                     return AreEqual(exptext.ParamValue, actualText, "Success", "Text was not as expected");
+                
+                case EStepItemCode.WaitForSeconds:
+                    StepParamDetail seconds = stepData.StepParams.FirstOrDefault(x => x.ParamLabel.ToLower() == "Seconds To Wait".ToLower());
+                    if(string.IsNullOrEmpty(seconds.ParamValue))
+                        return new ServiceMessage(){Message = "seconds value was not specified",WasSuccess = false};
+                   
+
+                    Thread.Sleep(Convert.ToInt16(seconds.ParamValue));
+                    return new ServiceMessage(){Message = "Success",WasSuccess = true};
                    
                 default:
                     throw new ArgumentOutOfRangeException();

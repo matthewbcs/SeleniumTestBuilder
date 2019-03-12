@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Home Page";
 }
-
+<link href="~/CustomFiles/loaderRing.css" rel="stylesheet" />
 <script>
 
     var stepTypeList = ['Given', 'When', 'Then'];
@@ -15,6 +15,10 @@
         DefinedStepsList: @Html.Raw(new JsonSerializationProcessor().Serialize(Model.DefinedSteps)),
         StepsList: [],
         SelectedStep: null,
+        TestRunning: false,
+        DidFail: null,
+        DidPass:null,
+        
     }
 </script>
 
@@ -30,26 +34,31 @@
     </div>
     
 
-<div psi-sortable="" ng-model="StepsList">
-    <div ng-repeat="item in StepsList track by $index"><div class="step">
+<div ng-show="TestRunning === false" psi-sortable="" ng-model="StepsList">
+    <div ng-repeat="item in StepsList track by $index">
+        <div ng-class="{pass: item.DidPass , fail: item.DidFail}" class="step">
 
-  
-            <div >{{item.StepTypeLabel}} {{item.StepLabel}}</div>
 
-    <div style="margin-bottom: 5px; font-weight: bold">Parameters</div>
+            <div style="font-size: xx-large">{{item.StepTypeLabel}} {{item.StepLabel}}</div>
 
-    <div style="margin-bottom: 5px" ng-repeat="t in item.StepParams ">
-        {{t.ParamLabel}}:<input type="text" ng-model="t.ParamValue" />
+            <div style="margin-bottom: 5px; font-weight: bold">Parameters</div>
+
+            <div style="margin-bottom: 5px" ng-repeat="t in item.StepParams ">
+                {{t.ParamLabel}}:<input type="text" ng-model="t.ParamValue" />
+            </div>
+
+            <div ng-show="item.IsRunning === true" class="loadingRing"><div class="loader"></div></div>
+            <div ng-show="item.DidPass === true"><img class="greentick" src="~/CustomFiles/img/gtick.png" /></div>
+            <div ng-show="item.DidFail === true"><img class="redcross" src="~/CustomFiles/img/redcross1.png" /></div>
+            <div ng-show="item.DidFail === true"> Test Response: {{item.FailMessage}}</div>
+
+        </div>
+
     </div>
-
-
-
-
-</div>
-        
-    </div>
+   
 </div>
 <hr>
+<div style="text-align: center" ng-show="TestRunning === true" class="mainLoader"><div class="loader"></div> <span style="display: block">Running your test...</span></div>
 <div style="display: -webkit-box; font-size: larger; text-align: center" ng-repeat="item in StepsList track by $index"> {{item.StepTypeLabelFull}} -> 
     
     <div style="background-color: yellow" ng-repeat="s in item.StepParams track by $index">

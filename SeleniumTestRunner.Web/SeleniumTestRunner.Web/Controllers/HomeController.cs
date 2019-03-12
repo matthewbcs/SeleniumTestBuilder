@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using SeleniumTestBuilder.Service.TestBuilderSteps;
+using SeleniumTestBuilder.Service.TestRunner;
 using SeleniumTestRunner.Models.Dto;
 using SeleniumTestRunner.Models.ViewModels;
 
@@ -28,9 +30,26 @@ namespace SeleniumTestRunner.Web.Controllers
         [HttpPost]
         public ActionResult RunSeleniumTest(List<StepItem> StepsList)
         {
+            List<ServiceMessage> serviceMessage = new TestRunnerService().RunTest(StepsList);
+
+            return Json(serviceMessage);
+        }
+        [HttpPost]
+        public ActionResult RunSingleStep(StepItem Step)
+        {
+            Thread.Sleep(4000);
+            ServiceMessage serviceMessage = new TestRunnerService().RunTest(Step);
             
-          
-            return Json(null);
+            //TestRunnerService t = new TestRunnerService();
+            //ServiceMessage serviceMessage = t.Run(Step);
+
+            return Json(serviceMessage);
+        }
+        [HttpPost]
+        public ActionResult ClearChromeDriver()
+        {
+            new TestRunnerService().ClearDriver();
+            return Json(true);
         }
 
         public ActionResult About()
