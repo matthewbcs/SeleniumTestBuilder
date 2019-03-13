@@ -34,6 +34,11 @@ namespace SeleniumTestBuilder.Service.TestRunner
                     {
                         ServiceMessage serviceMessage = testStepsService.ExecuteStep(driver, steps[i], steps[i].StepParams);
                         responses.Add(serviceMessage);
+
+                        // if step fails might aswell end test no point running remaiming steps as will likey fail aswell
+                        if(serviceMessage.WasSuccess ==false)
+                            break;
+                        
                     }
                     catch (Exception e)
                     {
@@ -47,17 +52,22 @@ namespace SeleniumTestBuilder.Service.TestRunner
                     {
                         ServiceMessage serviceMessage = testStepsService.ExecuteStep(driver, steps[i], steps[i].StepParams);
                         responses.Add(serviceMessage);
+
+                        // if step fails might aswell end test no point running remaiming steps as will likey fail aswell
+                        if(serviceMessage.WasSuccess ==false)
+                            break;
                     }
                     catch (Exception e)
                     {
                         responses.Add(new ServiceMessage(){Message = "There was an error, the selector/url may be invalid ", WasSuccess = false});
+                        break;
                     }
                     
                 }
-                else
-                {
-                    responses.Add(new ServiceMessage(){Message = "There was an error, the selector/url may be invalid ", WasSuccess = false});
-                }
+                //else
+                //{
+                //    responses.Add(new ServiceMessage(){Message = "There was an error, the selector/url may be invalid ", WasSuccess = false});
+                //}
             }
 
             ClearDriver();

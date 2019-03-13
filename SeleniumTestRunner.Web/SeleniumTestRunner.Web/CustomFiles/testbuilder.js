@@ -39,7 +39,9 @@ app.controller('ctrl', ['$scope', '$http','$timeout', function ($scope, $http,$t
     $scope.addSampleTest = function () {
         $scope.StepsList = $scope.SampleTest1StepsList;
     };
-
+    $scope.Delete = function (itemvalue) {
+        $scope.StepsList = $scope.StepsList.filter(item => item !== itemvalue);
+    };
     $scope.RunTest = function () {
 
         var postData = {};

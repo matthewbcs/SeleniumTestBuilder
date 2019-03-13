@@ -31,6 +31,12 @@ namespace SeleniumTestRunner.Web.Controllers
         [HttpPost]
         public ActionResult RunSeleniumTest(List<StepItem> StepsList)
         {
+
+            if(StepsList.Count < 1)
+                return Json(new ServiceMessage(){Message = "There was no steps to run",WasSuccess = false});
+
+
+
             List<ServiceMessage> serviceMessage = new TestRunnerService().RunTest(StepsList);
 
             return Json(serviceMessage);

@@ -48,6 +48,7 @@
             <div style="margin-bottom: 5px" ng-repeat="t in item.StepParams ">
                 {{t.ParamLabel}}:<input type="text" ng-model="t.ParamValue" />
             </div>
+            <input type="button" value="Delete" ng-click="Delete(item)" />
 
             <div ng-show="item.IsRunning === true" class="loadingRing"><div class="loader"></div></div>
             <div ng-show="item.DidPass === true"><img class="greentick" src="~/CustomFiles/img/gtick.png" /></div>
@@ -61,7 +62,8 @@
 </div>
 <hr>
 <div style="text-align: center" ng-show="TestRunning === true" class="mainLoader"><div class="loader"></div> <span style="display: block">Running your test...</span></div>
-<div style="display: -webkit-box; font-size: larger; text-align: center" ng-repeat="item in StepsList track by $index"> {{item.StepTypeLabelFull}} -> 
+<div> <b style="color: blue;font-size: larger;">Scenario:</b> Your test scenario using online test builder</div>
+<div style="display: -webkit-box; font-size: larger; text-align: center" ng-repeat="item in StepsList track by $index"> <b style="color: blue">{{item.StepTypeLabel}}</b> {{item.StepLabel}} -> 
     
     <div style="background-color: yellow" ng-repeat="s in item.StepParams track by $index">
         {{s.ParamValue}}
