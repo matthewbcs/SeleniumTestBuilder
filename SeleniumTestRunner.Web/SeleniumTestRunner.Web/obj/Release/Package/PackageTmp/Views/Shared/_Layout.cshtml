@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="~/CustomFiles/style.css" />
     @*<script src="~/CustomFiles/script.js"></script>*@
     <script src="~/CustomFiles/testbuilder.js"></script>
+    
+   
 
 </head>
 <body>
@@ -30,6 +32,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Test Feature Builder & Runner", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Test Console", "TestConsole", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">

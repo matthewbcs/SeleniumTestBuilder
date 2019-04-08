@@ -81,7 +81,7 @@ app.controller('ctrl', ['$scope', '$http','$timeout', function ($scope, $http,$t
         //$scope.StepsList[i].IsRunning = false;
         $scope.TestRunning = true;
 
-        $http.post('../Home/RunSeleniumTest', postData).then(function(response) {
+        $http.post('~/Home/RunSeleniumTest', postData).then(function(response) {
 
             $scope.TestRunning = false;
 

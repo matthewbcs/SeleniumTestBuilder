@@ -181,3 +181,16 @@ C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunne
 C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Web\obj\Release\SeleniumTestRunner.Web.csproj.CopyComplete
 C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Web\obj\Release\SeleniumTestRunner.Web.dll
 C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Web\obj\Release\SeleniumTestRunner.Web.pdb
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Web\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Web\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Web\bin\Microsoft.Owin.dll
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Web\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Web\bin\Microsoft.Owin.Security.dll
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Web\bin\Owin.dll
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Web\bin\Microsoft.AspNet.SignalR.Core.pdb
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Web\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Web\bin\Microsoft.AspNet.SignalR.SystemWeb.pdb
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Web\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Web\bin\Microsoft.Owin.xml
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Web\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Web\bin\Microsoft.Owin.Security.xml
