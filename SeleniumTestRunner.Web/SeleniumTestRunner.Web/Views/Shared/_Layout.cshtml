@@ -1,10 +1,10 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    
-    
 
-    <meta charset="utf-8"/>
+
+
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
@@ -12,12 +12,14 @@
 
     <link data-semver="1.10.0" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/css/smoothness/jquery-ui-1.10.0.custom.min.css" />
     <script data-semver="2.0.3" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-    <script  data-semver="1.10.0" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.js"></script>
+    <script data-semver="1.10.0" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.js"></script>
     <script data-require="angular.js@1.2.0-rc3-nonmin" data-semver="1.2.0-rc3-nonmin" src="http://code.angularjs.org/1.2.0-rc.3/angular.js"></script>
-    <script src="/CustomFiles/sortable.js"></script>
-    <link rel="stylesheet" href="/CustomFiles/style.css" />
-    @*<script src="/CustomFiles/script.js"></script>*@
-    <script src="/CustomFiles/testbuilder.js"></script>
+    <script src="~/CustomFiles/sortable.js"></script>
+    <link rel="stylesheet" href="~/CustomFiles/style.css" />
+    @*<script src="~/CustomFiles/script.js"></script>*@
+    <script src="~/CustomFiles/testbuilder.js"></script>
+    
+   
 
 </head>
 <body>
@@ -30,6 +32,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Test Feature Builder & Runner", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Test Console", "TestConsole", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">

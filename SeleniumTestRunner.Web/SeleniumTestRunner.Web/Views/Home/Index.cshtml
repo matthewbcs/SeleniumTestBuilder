@@ -26,17 +26,17 @@
 <body ng-app="myapp" ng-controller="ctrl">
 <h4 style="text-align: center">Can you write a test that passes ??</h4>
 
-<div style="text-align: center" >
-    <select ng-model="SelectedStep" ng-options="x.StepTypeLabelFull for x in DefinedStepsList">
-
-    </select>
-    <input type="button" value="Add Step" ng-click="addStep()"/>
-    <input type="button" value="Set Sample Test" ng-click="addSampleTest()"/>
+<div style="text-align: center">
+    <select ng-model="SelectedStep" ng-options="x.StepTypeLabelFull for x in DefinedStepsList"></select>
+    <input type="button" value="Add Step" ng-click="addStep()" />
+    <input type="button" value="Set Sample Test" ng-click="addSampleTest()" />
     <input type="button" value="Run Feature" ng-click="RunTest()" />
-    </div>
+    <div style="text-align: center; width: 67px; height: 68px" ng-show="TestRunning === true" class="mainLoader"><div style="width: 67px; height: 68px" class="loader"></div> <span style="display: block">Running your test...</span></div>
+
+</div>
     
 
-<div ng-show="TestRunning === false" psi-sortable="" ng-model="StepsList">
+<div  psi-sortable="" ng-model="StepsList">
     <div ng-repeat="item in StepsList track by $index">
         <div ng-class="{pass: item.DidPass , fail: item.DidFail}" class="step">
 
@@ -50,10 +50,11 @@
             </div>
             <input type="button" value="Delete" ng-click="Delete(item)" />
 
-            <div ng-show="item.IsRunning === true" class="loadingRing"><div class="loader"></div></div>
+
             <div ng-show="item.DidPass === true"><img class="greentick" src="~/CustomFiles/img/gtick.png" /></div>
             <div ng-show="item.DidFail === true"><img class="redcross" src="~/CustomFiles/img/redcross1.png" /></div>
             <div ng-show="item.DidFail === true"> Test Response: {{item.FailMessage}}</div>
+            <div ng-show="item.IsRunning === true" class="loadingRing"><div class="loader"></div> </div>
 
         </div>
 
@@ -61,7 +62,7 @@
    
 </div>
 <hr>
-<div style="text-align: center" ng-show="TestRunning === true" class="mainLoader"><div class="loader"></div> <span style="display: block">Running your test...</span></div>
+
 <div> <b style="color: blue;font-size: larger;">Scenario:</b> Your test scenario using online test builder</div>
 <div style="display: -webkit-box; font-size: larger; text-align: center" ng-repeat="item in StepsList track by $index"> <b style="color: blue">{{item.StepTypeLabel}}</b> {{item.StepLabel}} -> 
     
@@ -70,4 +71,14 @@
     </div>
 
 </div>
+<h3> Console output</h3>
+<ul id="discussion"></ul>
 </body>
+@section scripts
+{
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.4.0.min.js"></script>
+    <script src="/signalr/hubs"></script>
+
+   
+}

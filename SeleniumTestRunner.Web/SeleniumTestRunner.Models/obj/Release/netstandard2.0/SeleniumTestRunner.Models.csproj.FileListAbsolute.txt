@@ -1,0 +1,9 @@
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Models\bin\Release\netstandard2.0\SeleniumTestRunner.Models.deps.json
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Models\bin\Release\netstandard2.0\SeleniumTestRunner.Models.dll
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Models\bin\Release\netstandard2.0\SeleniumTestRunner.Models.pdb
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Models\obj\Release\netstandard2.0\SeleniumTestRunner.Models.csprojAssemblyReference.cache
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Models\obj\Release\netstandard2.0\SeleniumTestRunner.Models.csproj.CoreCompileInputs.cache
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Models\obj\Release\netstandard2.0\SeleniumTestRunner.Models.AssemblyInfoInputs.cache
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Models\obj\Release\netstandard2.0\SeleniumTestRunner.Models.AssemblyInfo.cs
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Models\obj\Release\netstandard2.0\SeleniumTestRunner.Models.dll
+C:\PersonalProjects\SeleniumTestBuilder\SeleniumTestRunner.Web\SeleniumTestRunner.Models\obj\Release\netstandard2.0\SeleniumTestRunner.Models.pdb

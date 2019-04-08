@@ -1,0 +1,20 @@
+﻿body {
+}
+li {
+    border: 1px solid;
+    cursor: move;
+    background: #ccc;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.step {
+   
+    border-radius: 12px;
+    margin-bottom: 5px;margin-top: 5px;
+    background-color: lightgoldenrodyellow;
+    font-size: larger;
+    text-align: center
+                      
+                                   
+}

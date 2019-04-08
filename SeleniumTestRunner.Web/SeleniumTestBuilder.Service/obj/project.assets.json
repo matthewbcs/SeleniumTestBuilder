@@ -2,6 +2,18 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.0": {
+      "Microsoft.AspNet.SignalR/2.4.0": {
+        "type": "package"
+      },
+      "Microsoft.AspNet.SignalR.Core/2.4.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Microsoft.AspNet.SignalR.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.AspNet.SignalR.Core.dll": {}
+        }
+      },
       "Microsoft.CSharp/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -681,6 +693,29 @@
     }
   },
   "libraries": {
+    "Microsoft.AspNet.SignalR/2.4.0": {
+      "sha512": "EZUnyn6U9s6mwA50dZ/nJHsDZAJNcrEC/pCJiaL0UR5xTDo5wZHn82dLAWVo7mbjKQOfrf6O8O9l6lIUbAsl0g==",
+      "type": "package",
+      "path": "microsoft.aspnet.signalr/2.4.0",
+      "files": [
+        ".signature.p7s",
+        "microsoft.aspnet.signalr.2.4.0.nupkg.sha512",
+        "microsoft.aspnet.signalr.nuspec"
+      ]
+    },
+    "Microsoft.AspNet.SignalR.Core/2.4.0": {
+      "sha512": "/OjQ1ejNTrWgZDEf4X8AgLpUb65v4U8hwRgM2LLdwV1ZTqJXXYVc3A8sHtkETOmLal6n0u8m1DDxqV8LTbj/Jw==",
+      "type": "package",
+      "path": "microsoft.aspnet.signalr.core/2.4.0",
+      "files": [
+        ".signature.p7s",
+        "lib/net45/Microsoft.AspNet.SignalR.Core.dll",
+        "lib/net45/Microsoft.AspNet.SignalR.Core.pdb",
+        "lib/net45/Microsoft.AspNet.SignalR.Core.xml",
+        "microsoft.aspnet.signalr.core.2.4.0.nupkg.sha512",
+        "microsoft.aspnet.signalr.core.nuspec"
+      ]
+    },
     "Microsoft.CSharp/4.3.0": {
       "sha512": "P+MBhIM0YX+JqROuf7i306ZLJEjQYA9uUyRDE+OqwUI5sh41e2ZbPQV3LfAPh+29cmceE1pUffXsGfR4eMY3KA==",
       "type": "package",
@@ -3122,6 +3157,8 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
+      "Microsoft.AspNet.SignalR >= 2.4.0",
+      "Microsoft.AspNet.SignalR.Core >= 2.4.0",
       "NETStandard.Library >= 2.0.3",
       "Selenium.WebDriver >= 3.141.0",
       "SeleniumTestRunner.Models >= 1.0.0"
@@ -3172,6 +3209,14 @@
     "frameworks": {
       "netstandard2.0": {
         "dependencies": {
+          "Microsoft.AspNet.SignalR": {
+            "target": "Package",
+            "version": "[2.4.0, )"
+          },
+          "Microsoft.AspNet.SignalR.Core": {
+            "target": "Package",
+            "version": "[2.4.0, )"
+          },
           "NETStandard.Library": {
             "suppressParent": "All",
             "target": "Package",
@@ -3190,5 +3235,17 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.AspNet.SignalR.Core 2.4.0' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETStandard,Version=v2.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.AspNet.SignalR.Core",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.0"
+      ]
+    }
+  ]
 }

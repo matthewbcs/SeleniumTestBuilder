@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using SeleniumTestBuilder.Service.TestBuilderSteps;
@@ -25,6 +26,7 @@ namespace SeleniumTestBuilder.Service.TestRunner
         {
             TestStepsService testStepsService = new TestStepsService();
             List<ServiceMessage> responses = new List<ServiceMessage>();
+            MessageService messageService = new MessageService();
 
             for (int i = 0; i < steps.Count; i++)
             {
@@ -34,15 +36,24 @@ namespace SeleniumTestBuilder.Service.TestRunner
                     {
                         ServiceMessage serviceMessage = testStepsService.ExecuteStep(driver, steps[i], steps[i].StepParams);
                         responses.Add(serviceMessage);
-
-                        // if step fails might aswell end test no point running remaiming steps as will likey fail aswell
-                        if(serviceMessage.WasSuccess ==false)
-                            break;
                         
+                        // set if pass or fail
+                        StepItem stepItem = SetStepStatus(steps, i, serviceMessage);
+
+                        messageService.SubmitMessage(JsonConvert.SerializeObject(stepItem));
+                        // if step fails might aswell end test no point running remaiming steps as will likey fail aswell
+                        if (serviceMessage.WasSuccess == false)
+                            break;
+
                     }
                     catch (Exception e)
                     {
-                        responses.Add(new ServiceMessage(){Message = "There was an error, the selector/url may be invalid ", WasSuccess = false});
+                        ServiceMessage s = new ServiceMessage()
+                            {Message = "There was an error, the selector/url may be invalid ", WasSuccess = false};
+                        responses.Add(s);
+                        // set if pass or fail
+                        StepItem stepItem = SetStepStatus(steps, i, s);
+                        messageService.SubmitMessage(JsonConvert.SerializeObject(stepItem));
                         break;
                     }
                     
@@ -52,6 +63,9 @@ namespace SeleniumTestBuilder.Service.TestRunner
                     {
                         ServiceMessage serviceMessage = testStepsService.ExecuteStep(driver, steps[i], steps[i].StepParams);
                         responses.Add(serviceMessage);
+                        // set if pass or fail
+                        StepItem stepItem = SetStepStatus(steps, i, serviceMessage);
+                        messageService.SubmitMessage(JsonConvert.SerializeObject(stepItem));
 
                         // if step fails might aswell end test no point running remaiming steps as will likey fail aswell
                         if(serviceMessage.WasSuccess ==false)
@@ -59,7 +73,11 @@ namespace SeleniumTestBuilder.Service.TestRunner
                     }
                     catch (Exception e)
                     {
-                        responses.Add(new ServiceMessage(){Message = "There was an error, the selector/url may be invalid ", WasSuccess = false});
+                        ServiceMessage s = new ServiceMessage()
+                            {Message = "There was an error, the selector/url may be invalid ", WasSuccess = false};
+                        responses.Add(s);
+                        StepItem stepItem = SetStepStatus(steps, i, s);
+                        messageService.SubmitMessage(JsonConvert.SerializeObject(stepItem));
                         break;
                     }
                     
@@ -74,6 +92,25 @@ namespace SeleniumTestBuilder.Service.TestRunner
 
             return responses;
 
+        }
+
+        private static StepItem SetStepStatus(List<StepItem> steps, int i, ServiceMessage serviceMessage)
+        {
+            steps[i].StepIndexPos = i;
+
+            if (serviceMessage.WasSuccess)
+            {
+                steps[i].DidFail = false;
+                steps[i].DidPass = true;
+              
+            }
+            else
+            {
+                steps[i].DidFail = true;
+                steps[i].FailMessage = serviceMessage.Message;
+            }
+
+            return steps[i];
         }
 
         public ServiceMessage RunTest(StepItem step)

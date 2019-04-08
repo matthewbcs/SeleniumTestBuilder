@@ -15,6 +15,7 @@ namespace SeleniumTestRunner.Models.Dto
         public int StepItemCode { get; set; }
         public List<StepParamDetail> StepParams { get; set; }
 
+        public int StepIndexPos { get; set; }
         public bool IsRunning { get; set; }
         public bool DidPass { get; set; }
         public bool DidFail { get; set; }

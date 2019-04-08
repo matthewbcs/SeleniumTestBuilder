@@ -42,6 +42,12 @@ namespace SeleniumTestRunner.Web.Controllers
             return Json(serviceMessage);
         }
         [HttpPost]
+        public ActionResult testpong(List<StepItem> StepsList)
+        {
+
+            return Json("pong");
+        }
+        [HttpPost]
         public ActionResult RunSingleStep(StepItem Step)
         {
             Thread.Sleep(4000);
@@ -59,18 +65,11 @@ namespace SeleniumTestRunner.Web.Controllers
             return Json(true);
         }
 
-        public ActionResult About()
+        public ActionResult TestConsole()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
 
-            return View();
-        }
     }
 }
